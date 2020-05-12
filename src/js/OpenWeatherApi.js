@@ -5,7 +5,7 @@ export default class OpenWeatherApi {
   constructor(unit, apiKey, lang) {
     this.unit = unit;
     this.apiKey = apiKey;
-    this.baseApiUrl = '//api.openweathermap.org/data/2.5';
+    this.baseApiUrl = 'https://api.openweathermap.org/data/2.5';
     this.lang = lang;
   }
   getForecast(args) {
@@ -76,8 +76,8 @@ export default class OpenWeatherApi {
       dayMapped.temperature.max = Math.max.apply(Math, dayDataFiltered.map(function(el) { return el.main.temp_max;})).toFixed(0);
       
       // Taking the middle of the day as reference
-      dayMapped.description = dayDataFiltered[dayDataFiltered.length/2].weather[0].description;
-      dayMapped.icon = dayDataFiltered[dayDataFiltered.length/2].weather[0].icon;
+      dayMapped.description = dayDataFiltered[Math.round(dayDataFiltered.length/2)].weather[0].description;
+      dayMapped.icon = dayDataFiltered[Math.round(dayDataFiltered.length/2)].weather[0].icon;
 
       daysMapped.push(dayMapped);
     }

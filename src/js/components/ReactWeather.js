@@ -62,7 +62,8 @@ class ReactWeather extends React.Component {
     return <div>Loading...</div>;
   }
   componentDidMount() {
-    this.getForecastData();
+    this.getForecastData()
+    setInterval(this.getForecastData(), 1000*60*60*3);
   }
   getForecastData() {
     const self = this;
